@@ -1,5 +1,5 @@
-import {google} from 'googleapis';
-import googleCredentials from './google-credentials.js';
+const google = require('googleapis').google;
+const googleCredentials = require('./google-credentials.js').default;
 
 const spreadsheetId = "1RSH0TdJa7AicL_LDUl0uoN4Pxdf6XAblpYKkDXmR5HY";
 
@@ -12,7 +12,6 @@ const spreadsheetId = "1RSH0TdJa7AicL_LDUl0uoN4Pxdf6XAblpYKkDXmR5HY";
         },
         scopes: "https://www.googleapis.com/auth/spreadsheets",
     });
-    
     const client = await auth.getClient();
 
     // const client = auth.fromJSON(keys);
