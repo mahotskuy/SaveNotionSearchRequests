@@ -12,11 +12,10 @@ const router = express.Router();
 app.use('/.netlify/functions/api', router);  
 
 router.post("/super-search", async (req, res) => {
-  const query = req.body.query;
-  if(!query || !query.includes("SiteSearch")){
+  const requestText = req.body.text;
+  if(!requestText){
     return res.end();
   }
-  var requestText = req.body.variables.input.query;
   await addRecord(requestText);
   return res.send();
 });
