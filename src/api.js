@@ -8,19 +8,12 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const options = {
-  setHeaders (res, path, stat) {
-    res.set('Access-Control-Allow-Origin', "*");
-  }
-}
-
-app.use(express.static('public', options))
-
 const router = express.Router();
 app.use('/.netlify/functions/api', router);  
 
 router.post("/super-search", async (req, res) => {
   const requestText = req.body.text;
+  res.set('Access-Control-Allow-Origin', "*");
   if(!requestText){
     return res.end();
   }
