@@ -7,11 +7,6 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const headers = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-};
 
 const options = {
   setHeaders (res, path, stat) {
@@ -30,7 +25,7 @@ router.post("/super-search", async (req, res) => {
     return res.end();
   }
   await addRecord(requestText);
-  return res.header();
+  return res.end();
 });
 
 // This route processes GET requests to "/"`
