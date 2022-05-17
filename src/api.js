@@ -7,6 +7,19 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+};
+
+const options = {
+  setHeaders (res, path, stat) {
+    res.set('Access-Control-Allow-Origin', "*");
+  }
+}
+
+app.use(express.static('public', options))
 
 const router = express.Router();
 app.use('/.netlify/functions/api', router);  
@@ -17,7 +30,7 @@ router.post("/super-search", async (req, res) => {
     return res.end();
   }
   await addRecord(requestText);
-  return res.send();
+  return res.header();
 });
 
 // This route processes GET requests to "/"`
