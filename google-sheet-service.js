@@ -1,9 +1,7 @@
 const google = require('googleapis').google;
 const googleCredentials = require('./google-credentials.js').default;
 
-const spreadsheetId = "1RSH0TdJa7AicL_LDUl0uoN4Pxdf6XAblpYKkDXmR5HY";
-
- export const addRecord = async function(searchText) {
+ export const addRecord = async function(searchText, spreadsheetId) {
     const auth = new google.auth.GoogleAuth({
         credentials: {
             client_id: googleCredentials.client_id,
